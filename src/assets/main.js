@@ -52,16 +52,19 @@ function showAnswer(result) {
     }
 }
 
+function showReplay() {
+    document.getElementById('guessing-div').style = "display:none";
+    document.getElementById('replay-div').style = "display:block";
+}
+
+
 function guess(){
     let answer = document.getElementById('answer').value;
     let attempt = document.getElementById('attempt').value;
-    let code = document.getElementById('code');
-    let guessingDiv = document.getElementById('guessing-div');
     let input = document.getElementById('user-guess').value;
-    let replayDiv = document.getElementById('replay-div');
     let results = document.getElementById('results');
 
-    message.innerHTML = "";
+    setMessage("");
 
     if(answer == "") {
         setHiddenFields();
@@ -83,13 +86,11 @@ function guess(){
     if(correct == input.length) {
         setMessage('You Win! :)');
         showAnswer(true);
-        guessingDiv.style = "display:none";
-        replayDiv.style = "display:block";
+        showReplay();
     } else if(attempt >= 10) {
         setMessage('You Lose! :(');
         showAnswer(false);
-        guessingDiv.style = "display:none";
-        replayDiv.style = "display:block";
+        showReplay();
     } else {
         setMessage('Incorrect, try again.');
     }

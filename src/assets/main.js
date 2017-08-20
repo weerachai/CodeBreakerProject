@@ -10,6 +10,14 @@ function setMessage(message) {
     document.getElementById('message').innerHTML = message;
 }
 
+function validateInput(input) {
+    if(input.length != 4) {
+        setMessage('Guesses must be exactly 4 characters long.');
+        return false;
+    } else
+        return true;
+}
+
 function guess(){
     let answer = document.getElementById('answer').value;
     let attempt = document.getElementById('attempt').value;

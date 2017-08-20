@@ -6,13 +6,16 @@ function setHiddenFields() {
     document.getElementById('answer').value = answer;
 }
 
+function setMessage(message) {
+    document.getElementById('message').innerHTML = message;
+}
+
 function guess(){
     let answer = document.getElementById('answer').value;
     let attempt = document.getElementById('attempt').value;
     let code = document.getElementById('code');
     let guessingDiv = document.getElementById('guessing-div');
     let input = document.getElementById('user-guess').value;
-    let message = document.getElementById('message');
     let replayDiv = document.getElementById('replay-div');
     let results = document.getElementById('results');
 
@@ -26,7 +29,7 @@ function guess(){
     }
 
     if(input.length != 4) {
-        message.innerHTML = 'Guesses must be exactly 4 characters long.';
+        setMessage('Guesses must be exactly 4 characters long.');
         return;
     } else {
         attempt++;
@@ -52,18 +55,18 @@ function guess(){
     results.innerHTML += html;
 
     if(correct == input.length) {
-        message.innerHTML = 'You Win! :)';
+        setMessage('You Win! :)');
         code.className += " success";
         code.innerHTML = answer;
         guessingDiv.style = "display:none";
         replayDiv.style = "display:block";
     } else if(attempt >= 10) {
-        message.innerHTML = 'You Lose! :(';
+        setMessage('You Lose! :(');
         code.className += " failure";
         code.innerHTML = answer;
         guessingDiv.style = "display:none";
         replayDiv.style = "display:block";
     } else {
-        message.innerHTML = 'Incorrect, try again.';
+        setMessage('Incorrect, try again.');
     }
 }

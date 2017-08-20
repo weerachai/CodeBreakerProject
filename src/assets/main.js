@@ -1,8 +1,9 @@
-let answer = document.getElementById('answer');
-let attempt = document.getElementById('attempt');
-
 function setHiddenFields() {
-    return Math.floor(Math.random() * 10000).toString();
+    answer = Math.floor(Math.random() * 10000).toString();
+    while(answer.length < 4) {
+            answer = "0" + answer;
+        }
+    document.getElementById('answer').value = answer;
 }
 
 function guess(){
@@ -18,11 +19,7 @@ function guess(){
     message.innerHTML = "";
 
     if(answer == "") {
-        answer = setHiddenFields();
-        while(answer.length < 4) {
-            answer = "0" + answer;
-        }
-        document.getElementById('answer').value = answer;
+        setHiddenFields();
     }
     if(attempt == "") {
         attempt = 0;

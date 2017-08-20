@@ -40,6 +40,18 @@ function getResults(input) {
     return correct;
 }
 
+function showAnswer(result) {
+    let answer = document.getElementById('answer').value;
+    let code = document.getElementById('code');
+    if (result) {
+        code.className += " success";
+        code.innerHTML = answer;
+    } else {
+        code.className += " failure";
+        code.innerHTML = answer;
+    }
+}
+
 function guess(){
     let answer = document.getElementById('answer').value;
     let attempt = document.getElementById('attempt').value;
@@ -70,14 +82,12 @@ function guess(){
 
     if(correct == input.length) {
         setMessage('You Win! :)');
-        code.className += " success";
-        code.innerHTML = answer;
+        showAnswer(true);
         guessingDiv.style = "display:none";
         replayDiv.style = "display:block";
     } else if(attempt >= 10) {
         setMessage('You Lose! :(');
-        code.className += " failure";
-        code.innerHTML = answer;
+        showAnswer(false);
         guessingDiv.style = "display:none";
         replayDiv.style = "display:block";
     } else {

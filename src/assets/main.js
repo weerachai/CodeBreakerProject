@@ -18,6 +18,27 @@ function validateInput(input) {
         return true;
 }
 
+function getResults(input) {
+    let answer = document.getElementById('answer').value;
+    let correct = 0;
+    let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
+    for(i = 0; i < input.length; i++)
+    {
+        if(input.charAt(i) == answer.charAt(i))
+        {
+            html += '<span class="glyphicon glyphicon-ok"></span>';
+            correct++;
+        } else if (answer.indexOf(input.charAt(i)) > -1) {
+            html += '<span class="glyphicon glyphicon-transfer"></span>';
+        } else {
+            html += '<span class="glyphicon glyphicon-remove"></span>';
+        }
+    }
+    html += '</div></div>';
+
+    document.getElementById('results').innerHTML += html;
+}
+
 function guess(){
     let answer = document.getElementById('answer').value;
     let attempt = document.getElementById('attempt').value;
@@ -44,23 +65,7 @@ function guess(){
         document.getElementById('attempt').value = attempt;
     }
 
-    let correct = 0;
-    let html = '<div class="row"><span class="col-md-6">' + input + '</span><div class="col-md-6">';
-    for(i = 0; i < input.length; i++)
-    {
-        if(input.charAt(i) == answer.charAt(i))
-        {
-            html += '<span class="glyphicon glyphicon-ok"></span>';
-            correct++;
-        } else if (answer.indexOf(input.charAt(i)) > -1) {
-            html += '<span class="glyphicon glyphicon-transfer"></span>';
-        } else {
-            html += '<span class="glyphicon glyphicon-remove"></span>';
-        }
-    }
-    html += '</div></div>';
-
-    results.innerHTML += html;
+    getResults(input);
 
     if(correct == input.length) {
         setMessage('You Win! :)');

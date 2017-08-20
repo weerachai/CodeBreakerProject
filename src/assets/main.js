@@ -1,3 +1,10 @@
+let answer = document.getElementById('answer');
+let attempt = document.getElementById('attempt');
+
+function setHiddenFields() {
+    return Math.floor(Math.random()*10000);
+}
+
 function guess(){
     let answer = document.getElementById('answer').value;
     let attempt = document.getElementById('attempt').value;

@@ -37,6 +37,7 @@ function getResults(input) {
     html += '</div></div>';
 
     document.getElementById('results').innerHTML += html;
+    return correct;
 }
 
 function guess(){
@@ -65,7 +66,7 @@ function guess(){
         document.getElementById('attempt').value = attempt;
     }
 
-    getResults(input);
+    correct = getResults(input);
 
     if(correct == input.length) {
         setMessage('You Win! :)');

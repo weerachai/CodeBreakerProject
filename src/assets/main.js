@@ -2,7 +2,7 @@ let answer = document.getElementById('answer');
 let attempt = document.getElementById('attempt');
 
 function setHiddenFields() {
-    return Math.floor(Math.random()*10000);
+    return Math.floor(Math.random() * 10000).toString();
 }
 
 function guess(){
@@ -18,7 +18,7 @@ function guess(){
     message.innerHTML = "";
 
     if(answer == "") {
-        answer = Math.floor(Math.random() * 10000).toString();
+        answer = setHiddenFields();
         while(answer.length < 4) {
             answer = "0" + answer;
         }
